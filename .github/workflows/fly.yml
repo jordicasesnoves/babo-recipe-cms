@@ -3,10 +3,12 @@ on:
   push:
     branches:
       - main
-env:
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 jobs:
   deploy:
+    name: Debug DATABASE_URL
+    run: echo $DATABASE_URL
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     name: Deploy app
     runs-on: ubuntu-latest
     steps:
