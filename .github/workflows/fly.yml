@@ -5,6 +5,7 @@ on:
       - main
 env:
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
   deploy:
     name: Deploy app
@@ -13,10 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Debug DATABASE_URL
-        run: echo $DATABASE_URL
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
