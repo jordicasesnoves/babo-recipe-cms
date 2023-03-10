@@ -10,11 +10,12 @@ jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
-    environment: production
+    environment:
+      name: production
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-          with:
+        with:
           node-version: 18
           cache: 'npm'
       - uses: superfly/flyctl-actions/setup-flyctl@master
